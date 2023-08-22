@@ -1,4 +1,3 @@
-// create your App component here
 import React, { useState, useEffect } from 'react';
 
 function App() {
@@ -8,11 +7,16 @@ function App() {
   useEffect(() => {
     fetch('https://dog.ceo/api/breeds/image/random')
       .then(response => response.json())
-      .then(data => {setDogImageUrl(data.message);
-      setIsLoading(false);
-      }).catch(error => {console.error('Error fetching dog image:', error);setIsLoading(false);
+      .then(data => {
+        setDogImageUrl(data.message);
+        setIsLoading(false);
+      })
+      .catch(error => {
+        console.error('Error fetching dog image:', error);
+        setIsLoading(false);
       });
-  },[]);
+  }, []);
+
   return (
     <div>
       {isLoading ? (
@@ -25,4 +29,3 @@ function App() {
 }
 
 export default App;
-
